@@ -22,14 +22,12 @@ def rho_h(z, h):
 
 # phi function : uneven sigmoidale function 
 def phi(z,a,b):
-     a = 0.005
-     b = 0.2
      c = abs(a-b)/np.sqrt(4*a*b)
      sigma1 = lambda x : x/np.sqrt(1+x*x)
      return (1/2)*((a+b)*sigma1(z+c)+(a-b))
 
 # phi_alpha function : pair wise potential with finite cut-off
-def phi_a(z, r, d, eps, h=1, a=0.05, b=0.05):
+def phi_a(z, r, d, eps, h=1, a=0.5, b=0.5):
     r_a = norm_sigm(r, eps)
     d_a = norm_sigm(d, eps)
     return rho_h(z/r_a, h)*phi(z-d_a, a, b)
